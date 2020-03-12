@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Health.Backend.Domain.Models
 {
-    public class PessoaModel
+    public class PessoaModel : ModelBase
     {
         public string Nome { get; set; }
 
