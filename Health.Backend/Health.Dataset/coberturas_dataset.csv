@@ -1,0 +1,11 @@
+id, nome, premio, valor, principal
+01, Morte Acidental, 100, 50000, S
+02, Quebra de Ossos, 30, 5000, N
+03, Internacao Hospitalar, 50, 10000, N
+04, Assistencia Funeraria, 10, 2500, N
+05, Invalidez Permanente, 130, 90000, S
+06, Assistencia Odontologia Emergencial, 10, 2500, N
+07, Diária Incapacidade Temporária, 30, 5000, N
+08, Invalidez Funcional, 80, 40000, S
+09, Doenças Graves, 100, 50000, N
+10, Diagnostico de Cancer, 50, 10000, N
