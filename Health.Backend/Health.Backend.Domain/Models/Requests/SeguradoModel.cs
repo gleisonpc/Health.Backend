@@ -32,7 +32,7 @@ namespace Health.Backend.Domain.Models.Requests
         {
             get
             {
-                return ValidoIdade && ValidoCidade && ValidoCep;
+                return ValidoIdade && ValidoCidade && ValidoCep && ValidoCoberturaObrigatoria && VallidoCoberturaQuantidade;
             }
         }
 
@@ -56,10 +56,15 @@ namespace Health.Backend.Domain.Models.Requests
         {
             get
             {
-                var coberturas = _coberturaRepository.ObterCoberturas();
-                var minhasCoberturas = coberturas.Where(x => Coberturas.Equals(x.Id));
-                var temObrigatorio = minhasCoberturas.Any(x => x.Principal == "S");
-                return temObrigatorio;
+                return ValidarCoberturaObrigatoria();
+            }
+        }
+
+        public bool VallidoCoberturaQuantidade
+        {
+            get
+            {
+                return ValidarCoberturaQuantidade();
             }
         }
 
@@ -107,6 +112,29 @@ namespace Health.Backend.Domain.Models.Requests
             if (!cidades.Cities.Any(x => x.Name.Equals(Endereco.Cidade)))
             {
                 AdicionarErro(MensagensErros.CIDADE_NAO_ENCONTRADA);
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidarCoberturaObrigatoria()
+        {
+            var coberturas = _coberturaRepository.ObterCoberturas();
+            var minhasCoberturas = coberturas.Where(x => Coberturas.Contains(x.Id));
+            var temObrigatorio = minhasCoberturas.Any(x => x.Principal == "S");
+
+            if (!temObrigatorio)
+                Erros.Add(MensagensErros.SEGURADO_SEM_NENHUMA_COBERTURA_OBRIGATORIA);
+
+            return temObrigatorio;
+        }
+
+        private bool ValidarCoberturaQuantidade()
+        {
+            if (Coberturas.Count() > 4)
+            {
+                Erros.Add(MensagensErros.SEGURADO_COM_MAIS_COBERTURAS_QUE_PERMITIDO);
                 return false;
             }
 

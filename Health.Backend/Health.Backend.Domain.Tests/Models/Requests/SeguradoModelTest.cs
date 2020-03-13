@@ -79,11 +79,44 @@ namespace Health.Backend.Domain.Tests.Models.Requests
         }
 
         [Fact]
-        public void Validar_Segurado_Com_Cobertura_Invalida()
+        public void Validar_Segurado_Com_Cobertura_Quantidade_Mais_Que_Quatro()
         {
-            _cidadeRepository.Setup(x => x.ObterCidades()).ReturnsAsync(_cidadesMock.Cidades);
+            _coberturaRepository.Setup(x => x.ObterCoberturas()).Returns(_coberturaMock.Coberturas);
+
+            var segurado = _seguradoMock.SeguradoComMaisDeQuatroCoberturas();
+
+            Assert.False(segurado.VallidoCoberturaQuantidade);
+            Assert.Contains(segurado.Erros, x => x == MensagensErros.SEGURADO_COM_MAIS_COBERTURAS_QUE_PERMITIDO);
+        }
+
+        [Fact]
+        public void Validar_Segurado_Com_Cobertura_Quantidade_Menos_Ou_Igual_Que_Quatro()
+        {
+            _coberturaRepository.Setup(x => x.ObterCoberturas()).Returns(_coberturaMock.Coberturas);
 
             var segurado = _seguradoMock.Segurado;
+
+            Assert.True(segurado.VallidoCoberturaQuantidade);
+            Assert.True(!segurado.Erros.Any(x => x == MensagensErros.SEGURADO_COM_MAIS_COBERTURAS_QUE_PERMITIDO));
+        }
+
+        [Fact]
+        public void Validar_Segurado_Com_Cobertura_Valida()
+        {
+            _coberturaRepository.Setup(x => x.ObterCoberturas()).Returns(_coberturaMock.Coberturas);
+
+            var segurado = _seguradoMock.Segurado;
+
+            Assert.True(segurado.ValidoCoberturaObrigatoria);
+            Assert.True(!segurado.Erros.Any(x => x == MensagensErros.SEGURADO_SEM_NENHUMA_COBERTURA_OBRIGATORIA));
+        }
+
+        [Fact]
+        public void Validar_Segurado_Com_Cobertura_Invalida()
+        {
+            _coberturaRepository.Setup(x => x.ObterCoberturas()).Returns(_coberturaMock.Coberturas);
+
+            var segurado = _seguradoMock.SeguradoComCoberturasInvalidas();
 
             Assert.False(segurado.ValidoCoberturaObrigatoria);
             Assert.Contains(segurado.Erros, x => x == MensagensErros.SEGURADO_SEM_NENHUMA_COBERTURA_OBRIGATORIA);
