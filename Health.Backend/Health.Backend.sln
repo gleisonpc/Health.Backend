@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Health.Backend.Domain.Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Health.Backend.Repository.Database.Tests", "Health.Backend.Repository.Tests\Health.Backend.Repository.Database.Tests.csproj", "{08629E38-1208-47EB-ADF2-D4C4AA9E7C95}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Health.Backend.App.Tests", "Health.Backend.App.Tests\Health.Backend.App.Tests.csproj", "{686FE8E3-B522-4EC0-B67D-155904C72C14}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Health.Backend.App", "Health.Backend.App\Health.Backend.App.csproj", "{EEECD1CD-3593-40C9-9501-FE1770124D3C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Health.Backend.Repository.API", "Health.Backend.Repository.API\Health.Backend.Repository.API.csproj", "{B64B520A-53FB-4C41-8BD4-7B7C19BBF41A}"
@@ -41,10 +39,6 @@ Global
 		{08629E38-1208-47EB-ADF2-D4C4AA9E7C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08629E38-1208-47EB-ADF2-D4C4AA9E7C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08629E38-1208-47EB-ADF2-D4C4AA9E7C95}.Release|Any CPU.Build.0 = Release|Any CPU
-		{686FE8E3-B522-4EC0-B67D-155904C72C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{686FE8E3-B522-4EC0-B67D-155904C72C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{686FE8E3-B522-4EC0-B67D-155904C72C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{686FE8E3-B522-4EC0-B67D-155904C72C14}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EEECD1CD-3593-40C9-9501-FE1770124D3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EEECD1CD-3593-40C9-9501-FE1770124D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEECD1CD-3593-40C9-9501-FE1770124D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU

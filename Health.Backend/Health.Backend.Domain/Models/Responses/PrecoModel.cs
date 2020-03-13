@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Health.Backend.Domain.Models.Responses
 {
-    public class PrecoModel
+    public class PrecoModel : ModelBase
     {
         private const int IDADE_MAX_ACRESCIMO = 30;
         private const int PORCENTAGEM_ACRESCIMO = 8;
@@ -67,6 +67,20 @@ namespace Health.Backend.Domain.Models.Responses
                 Acrescimo = (CalcularAcrescimoPorcentagem(segurado.Idade) / 100) * subTotal,
                 Desconto = (CalcularDescontoPorcentagem(segurado.Idade) / 100) * subTotal
             };
+        }
+
+        public static PrecoModel CriarPrecoModelComErros(SeguradoModel segurado)
+        {
+            var preco = new PrecoModel();
+            preco.Erros.AddRange(segurado.Erros);
+            return preco;
+        }
+
+        public static PrecoModel CriarPrecoModelComErro(string message)
+        {
+            var preco = new PrecoModel();
+            preco.Erros.Add(message);
+            return preco;
         }
 
         private static double CalcularAcrescimoPorcentagem(int idade) => (IDADE_MAX_ACRESCIMO - idade) * PORCENTAGEM_ACRESCIMO;

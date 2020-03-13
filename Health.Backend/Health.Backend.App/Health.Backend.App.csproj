@@ -8,6 +8,14 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Health.Backend.Domain\Health.Backend.Domain.csproj" />
+    <ProjectReference Include="..\Health.Backend.Repository.API\Health.Backend.Repository.API.csproj" />
+    <ProjectReference Include="..\Health.Backend.Repository\Health.Backend.Repository.Database.csproj" />
   </ItemGroup>
 
 </Project>

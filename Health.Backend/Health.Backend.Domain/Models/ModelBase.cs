@@ -13,7 +13,7 @@ namespace Health.Backend.Domain.Models
                 return !(Erros.Count > 0);
             }
         }
-        public IList<string> Erros { get; private set; }
+        public List<string> Erros { get; private set; }
 
         public void AdicionarErro(string erro) => Erros.Add(erro);
     }

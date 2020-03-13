@@ -9,8 +9,8 @@ namespace Health.Backend.Domain.Models.Requests
 {
     public class SeguradoModel : PessoaModel
     {
-        private readonly ICidadeRepository _cidadeRepository;
-        private readonly ICoberturaRepository _coberturaRepository;
+        private ICidadeRepository _cidadeRepository;
+        private ICoberturaRepository _coberturaRepository;
 
         public SeguradoModel(ICidadeRepository cidadeRepository, ICoberturaRepository coberturaRepository)
         {
@@ -28,12 +28,11 @@ namespace Health.Backend.Domain.Models.Requests
             }
         }
 
-        public override bool Valido
+        public new bool Valido(ICidadeRepository cidadeRepository, ICoberturaRepository coberturaRepository)
         {
-            get
-            {
-                return ValidoIdade && ValidoCidade && ValidoCep && ValidoCoberturaObrigatoria && VallidoCoberturaQuantidade;
-            }
+            _cidadeRepository = cidadeRepository;
+            _coberturaRepository = coberturaRepository;
+            return ValidoIdade && ValidoCidade && ValidoCep && ValidoCoberturaObrigatoria && VallidoCoberturaQuantidade;
         }
 
         public bool ValidoCep

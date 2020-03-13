@@ -1,12 +1,10 @@
 ﻿using CsvHelper;
 using Health.Backend.Domain.Entities;
 using Health.Backend.Domain.Repositories.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace Health.Backend.Repository.Repositories
 {

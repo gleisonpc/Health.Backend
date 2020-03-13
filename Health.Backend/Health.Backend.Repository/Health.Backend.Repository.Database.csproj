@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <None Update="coberturas_dataset.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
