@@ -1,5 +1,7 @@
 ﻿using Health.Backend.Domain.Models.Responses;
+using Health.Backend.Domain.Repositories.Interfaces;
 using Health.Backend.Domain.Tests.Mock;
+using Moq;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -13,13 +15,23 @@ namespace Health.Backend.Domain.Tests.Models.Response
         private const int IDADE_MIN_DESCONTO = 30;
         private const int IDADE_MAX_DESCONTO = 45;
 
+        private Mock<ICidadeRepository> _cidadeRepository;
+        private Mock<ICoberturaRepository> _coberturaRepository;
+
         private readonly CoberturasMock _coberturaMock;
         private readonly SeguradoMock _seguradoMock;
 
         public PrecoModelTest()
         {
+            _cidadeRepository = new Mock<ICidadeRepository>();
+            _coberturaRepository = new Mock<ICoberturaRepository>();
+
             _coberturaMock = new CoberturasMock();
-            _seguradoMock = new SeguradoMock(_coberturaMock.Coberturas);
+            _seguradoMock = new SeguradoMock(
+                _coberturaMock.Coberturas,
+                _cidadeRepository.Object,
+                _coberturaRepository.Object
+                );
         }
 
         [Fact]
